@@ -1,19 +1,15 @@
 package cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.dto;
 
 import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.enums.Type;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 import org.springframework.util.StringUtils;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class BranchDto {
     /*TODO
     create list from csv
@@ -44,8 +40,8 @@ public class BranchDto {
 
     @Override
     public String toString(){
-        return "{\nBranch name: " + name +
-                "\nCountry: " + country +
-                "\nEU/non-EU: " + type + "\n}";
+        return "\n{\n\tBranch name: " + name +
+                "\n\tCountry: " + country +
+                "\n\tEU/non-EU: " + type + "\n}\n";
     }
 }

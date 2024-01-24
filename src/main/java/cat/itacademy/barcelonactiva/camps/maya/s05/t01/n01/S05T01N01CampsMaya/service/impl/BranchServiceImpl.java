@@ -2,12 +2,12 @@ package cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.s
 
 import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.dto.BranchDto;
 import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.entity.Branch;
-import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.enums.Type;
 import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.repository.BranchRepository;
 import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.service.BranchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,22 +16,25 @@ public class BranchServiceImpl implements BranchService {
     private final BranchRepository branchRepo;
 
     @Override
-    public List<Branch> getAllBranches() {
+    public List<BranchDto> getAllBranches() {
+        List<Branch> branches = branchRepo.findAll();
+        List<BranchDto> branchesDto = new ArrayList<>();
+        branches.forEach(b -> branchesDto.add(toDto(b)));
+        return branchesDto;
+    }
+
+    @Override
+    public BranchDto getBranch(int id) {
         return null;
     }
 
     @Override
-    public Branch getBranch(int id) {
-        return null;
-    }
-
-    @Override
-    public void addBranch(Branch branch) {
+    public void addBranch(BranchDto branchDto) {
 
     }
 
     @Override
-    public void updateBranch(int id, Branch branch) {
+    public void updateBranch(int id, BranchDto branchDto) {
 
     }
 
