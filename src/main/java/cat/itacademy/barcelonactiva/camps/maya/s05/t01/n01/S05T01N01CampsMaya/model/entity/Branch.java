@@ -1,4 +1,4 @@
-package cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.entity;
+package cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.model.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

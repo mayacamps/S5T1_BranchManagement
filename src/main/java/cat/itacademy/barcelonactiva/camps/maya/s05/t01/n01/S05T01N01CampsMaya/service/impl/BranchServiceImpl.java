@@ -1,13 +1,11 @@
 package cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.service.impl;
 
-import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.dto.BranchDto;
-import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.entity.Branch;
+import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.model.dto.BranchDto;
+import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.model.entity.Branch;
 import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.repository.BranchRepository;
 import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.service.BranchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -18,9 +16,7 @@ public class BranchServiceImpl implements BranchService {
     @Override
     public List<BranchDto> getAllBranches() {
         List<Branch> branches = branchRepo.findAll();
-        List<BranchDto> branchesDto = new ArrayList<>();
-        branches.forEach(b -> branchesDto.add(toDto(b)));
-        return branchesDto;
+        return branches.stream().map(this::toDto).toList();
     }
 
     @Override

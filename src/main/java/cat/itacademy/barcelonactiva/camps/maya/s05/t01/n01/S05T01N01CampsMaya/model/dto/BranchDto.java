@@ -1,6 +1,6 @@
-package cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.dto;
+package cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.model.dto;
 
-import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.enums.Type;
+import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.model.enums.Type;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.util.StringUtils;
