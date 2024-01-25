@@ -19,7 +19,7 @@ public class BranchController {
         model.addAttribute("allBranches", service.getAllBranches());
         return "index";
     }
-    @GetMapping("/getAll")
+    @GetMapping({"","/getAll"})
     public String getAll(){
        return "redirect:/api/v1/";
     }
