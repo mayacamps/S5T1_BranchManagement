@@ -24,9 +24,16 @@ public class BranchController {
        return "redirect:/api/v1/";
     }
 
-    @PostMapping("/add")
-    public void add(@Valid @RequestBody BranchDto branchDto){
+    @GetMapping("/add")
+    public String showAddForm(Model model){
+        BranchDto branchDto = new BranchDto();
+        model.addAttribute("branch_dto", branchDto);
+        return "add_branch";
+    }
+    @PostMapping("/saveNew")
+    public String add(@ModelAttribute("branch_dto") BranchDto branchDto){
         service.addBranch(branchDto);
+        return "redirect:/api/v1/";
     }
 
     @GetMapping("/get/{id}")
