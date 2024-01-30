@@ -6,6 +6,7 @@ import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.re
 import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.service.BranchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -16,6 +17,7 @@ public class BranchServiceImpl implements BranchService {
     @Override
     public List<BranchDto> getAllBranches() {
         List<Branch> branches = branchRepo.findAll();
+        System.out.println(branches.size());
         return branches.stream().map(this::toDto).toList();
     }
 

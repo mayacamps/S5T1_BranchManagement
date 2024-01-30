@@ -2,6 +2,8 @@ package cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.m
 
 import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.model.enums.Type;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.springframework.util.StringUtils;
 
@@ -11,11 +13,11 @@ import java.util.*;
 @Setter
 @NoArgsConstructor
 public class BranchDto {
-    /*TODO
-    create list from csv
-     */
     private List<String> europeanCountries = Arrays.asList("Austria", "Belgium", "Bulgaria", "Croatia", "Republic of Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Ireland", "Italy", "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands", "Poland", "Portugal", "Romania", "Slovakia", "Slovenia", "Spain", "Sweden");
+    @NotBlank(message = "cannot be null")
+    @Size(min=4, max=30, message = "must be 4-30 long")
     private String name;
+    @NotBlank(message = "cannot be null")
     private String country;
 
     @Enumerated(EnumType.STRING)

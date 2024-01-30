@@ -6,7 +6,11 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/api/v1")
@@ -16,8 +20,9 @@ public class BranchController {
 
     @GetMapping("/")
     public String showHomePage(Model model){
-        model.addAttribute("allBranches", service.getAllBranches());
-        return "index";
+        List<BranchDto> allBranches = service.getAllBranches();
+        model.addAttribute("allBranches", allBranches);
+        return "branch_mgm";
     }
     @GetMapping({"","/getAll"})
     public String getAll(){
@@ -26,12 +31,17 @@ public class BranchController {
 
     @GetMapping("/add")
     public String showAddForm(Model model){
-        BranchDto branchDto = new BranchDto();
-        model.addAttribute("branch_dto", branchDto);
-        return "add_branch";
+        model.addAttribute("branch_dto", new BranchDto());
+        return "add_form";
     }
-    @PostMapping("/saveNew")
-    public String add(@ModelAttribute("branch_dto") BranchDto branchDto){
+    @PostMapping("/add")
+    public String add(@Valid @ModelAttribute("branch_dto") BranchDto branchDto, BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("branch_dto", branchDto);
+            System.out.println("hhhhh");
+            return "add_form";
+        }
+        System.out.println("aaaaaaaa");
         service.addBranch(branchDto);
         return "redirect:/api/v1/";
     }

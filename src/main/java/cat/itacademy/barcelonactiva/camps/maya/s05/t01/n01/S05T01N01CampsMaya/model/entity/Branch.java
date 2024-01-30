@@ -1,7 +1,9 @@
 package cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.io.Serializable;
@@ -17,11 +19,9 @@ public class Branch implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @NotNull(message = "cannot be null")
     @Column(name = "name")
     private String name;
 
-    @NotNull(message = "cannot be null")
     @Column(name = "country")
     private String country;
 
