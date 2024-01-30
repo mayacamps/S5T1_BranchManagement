@@ -29,6 +29,9 @@ public class BranchServiceImpl implements BranchService {
     @Override
     public void addBranch(BranchDto branchDto) {
         Branch branch = toEntity(branchDto);
+        if (branchRepo.findByNameIgnoreCase(branch.getName()).isPresent()){
+
+        }
         branchRepo.save(branch);
     }
 

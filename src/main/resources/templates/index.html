@@ -7,9 +7,37 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h3 class="text-center">Branch Management System</h3>
-        <a href="/api/v1">Start</a>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-body" data-bs-theme="dark">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Home</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <div class="nav navbar-nav">
+                    <a class="nav-link" href="/api/v1">List of Branches</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="mx-auto p-2" style="width: 600px;">
+            <br><br>
+            <h1>Branch Management Web API</h1>
+            <p> With the Branch Management application, you can persist a Branch entity in a MySQL database.</p><br>
+            <ul class="list-group"> <strong> Project specifications:</strong>
+                <li class="list-group-item">CRUD using Spring, JPA and MySQL</li>
+                <li class="list-group-item">Developed following the MVC pattern</li>
+                <li class="list-group-item">View developed using Thymeleaf and Bootstrap v5.3</li>
+            </ul>
+            <br>
+            <p class="text-center">
+                <a href="/api/v1" th:href="@{/api/v1}" class="btn btn-lg btn-success">Start</a>
+            </p>
+            <br><br>
+        </div>
     </div>
+
 </body>
 </html>
+
+

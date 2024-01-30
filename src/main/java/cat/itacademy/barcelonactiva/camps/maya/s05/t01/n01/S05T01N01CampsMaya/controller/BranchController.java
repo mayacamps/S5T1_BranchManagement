@@ -7,8 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -17,7 +17,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BranchController {
     private final BranchService service;
-
     @GetMapping("/")
     public String showHomePage(Model model){
         List<BranchDto> allBranches = service.getAllBranches();
@@ -35,14 +34,12 @@ public class BranchController {
         return "add_form";
     }
     @PostMapping("/add")
-    public String add(@Valid @ModelAttribute("branch_dto") BranchDto branchDto, BindingResult bindingResult, Model model){
+    public String add(@Valid @ModelAttribute("branch_dto") BranchDto branchDto, BindingResult bindingResult, RedirectAttributes redirect, Model model){
         if (bindingResult.hasErrors()) {
-            model.addAttribute("branch_dto", branchDto);
-            System.out.println("hhhhh");
             return "add_form";
         }
-        System.out.println("aaaaaaaa");
         service.addBranch(branchDto);
+        redirect.addFlashAttribute("added_success", "Branch added to the list.");
         return "redirect:/api/v1/";
     }
 

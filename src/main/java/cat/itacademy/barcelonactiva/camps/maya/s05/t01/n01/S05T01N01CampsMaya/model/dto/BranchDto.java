@@ -3,6 +3,7 @@ package cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.m
 import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.model.enums.Type;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.springframework.util.StringUtils;
@@ -12,12 +13,16 @@ import java.util.*;
 @Getter
 @Setter
 @NoArgsConstructor
+@Table
 public class BranchDto {
-    private List<String> europeanCountries = Arrays.asList("Austria", "Belgium", "Bulgaria", "Croatia", "Republic of Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Ireland", "Italy", "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands", "Poland", "Portugal", "Romania", "Slovakia", "Slovenia", "Spain", "Sweden");
-    @NotBlank(message = "cannot be null")
-    @Size(min=4, max=30, message = "must be 4-30 long")
+
+    private final List<String> EUROPEAN_COUNTRIES = Arrays.asList("Austria", "Belgium", "Bulgaria", "Croatia", "Republic of Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Ireland", "Italy", "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands", "Poland", "Portugal", "Romania", "Slovakia", "Slovenia", "Spain", "Sweden");
+    @Size(min=4, max=30, message = "Must be between 4 and 30 characters")
+    @NotBlank(message = "Please introduce a name")
+    @Pattern(regexp = "^[a-zA-Z0-9 ]*$",message = "Cannot include special characters")
+    @Column(unique = true)
     private String name;
-    @NotBlank(message = "cannot be null")
+    @NotBlank(message = "Must choose a country")
     private String country;
 
     @Enumerated(EnumType.STRING)
@@ -37,7 +42,7 @@ public class BranchDto {
     }
 
     private boolean isEuropean(String country){
-        return europeanCountries.stream().anyMatch(country::equalsIgnoreCase);
+        return EUROPEAN_COUNTRIES.stream().anyMatch(country::equalsIgnoreCase);
     }
 
     @Override

@@ -17,17 +17,17 @@ public class Branch implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id", unique = true)
     private Integer id;
 
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     private String name;
 
     @Column(name = "country")
     private String country;
 
-    public Branch(String name, String country){
+    public Branch(String name, String country) {
         this.name = name;
         this.country = country;
     }
-
 }
