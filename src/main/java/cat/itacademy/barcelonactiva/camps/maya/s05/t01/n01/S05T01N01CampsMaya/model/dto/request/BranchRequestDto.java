@@ -14,10 +14,10 @@ import lombok.Setter;
 @AllArgsConstructor
 public class BranchRequestDto {
     @Size(min=4, max=30, message = "Must be between 4 and 30 characters")
-    @NotBlank(message = "Please work")
+    @NotBlank(message = "Please introduce a name")
     @Pattern(regexp = "^[a-zA-Z0-9 ]*$",message = "Cannot include special characters")
     private String name;
 
-    @NotBlank(message = "Must choose a country")
+    @NotBlank(message = "Please choose a country")
     private String country;
 }
