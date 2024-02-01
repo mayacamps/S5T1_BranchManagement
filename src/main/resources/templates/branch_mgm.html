@@ -8,7 +8,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-body" data-bs-theme="dark">
-        <div class="container-fluid">
+        <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="/">Home</a>
             </div>
@@ -19,7 +19,7 @@
             </div>
         </div>
     </nav>
-    <div class="container">
+    <div class="container-fluid">
         <br>
         <div th:if="${added_success != null}" class="alert alert-success alert-dismissible">
             <strong>Success! </strong>[[${added_success}]]
@@ -43,24 +43,41 @@
                 <th:block th:if="${not#lists.isEmpty(allBranches)}">
                     <table class="table table-responsive-md table-hover table-bordered border-dark text-center">
                         <thead class="table-dark border-light">
-                        <tr>
-                            <th>Name</th>
-                            <th>Country</th>
-                            <th>EU/non-EU</th>
-                            <th>Actions</th>
-                        </tr>
+                            <tr>
+                                <th>Name</th>
+                                <th>Country</th>
+                                <th>EU/non-EU</th>
+                                <th>Actions</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="branchDto : ${allBranches}">
-                            <td th:text="${branchDto.name}"></td>
-                            <td th:text="${branchDto.country}"></td>
-                            <td th:text="${branchDto.type}"></td>
-                            <td>
-                                <a class="btn btn-info" th:href="@{./getOne/{id}(id=${branchDto.id})}">Detail</a>
-                                <a class="btn btn-primary" th:href="@{./update/{id}(id=${branchDto.id})}">Edit</a>
-                                <a class="btn btn-danger" th:href="@{./delete/{id}(id=${branchDto.id})}">Delete</a>
-                            </td>
-                        </tr>
+                            <tr th:each="branchDto : ${allBranches}">
+                                <td th:text="${branchDto.name}"></td>
+                                <td th:text="${branchDto.country}"></td>
+                                <td th:text="${branchDto.type}"></td>
+                                <td>
+                                    <a class="btn btn-info" th:href="@{./getOne/{id}(id=${branchDto.id})}">Detail</a>
+                                    <a class="btn btn-primary" th:href="@{./update/{id}(id=${branchDto.id})}">Edit</a>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                </td>
+                                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Delete Branch?</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>This branch will be permanently deleted.</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a class="btn btn-danger" th:href="@{./delete/{id}(id=${branchDto.id})}">Delete</a>
+                                                <a href="/api/v1" class="btn btn-light ms-2">Cancel</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </tr>
                         </tbody>
                     </table>
                 </th:block>
@@ -79,7 +96,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <p>There is no saved data. Start by adding some branches!</p>
+                                <p>There is no saved data. Add some branches!</p>
                             </div>
                         </div>
                     </div>
