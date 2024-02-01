@@ -25,6 +25,14 @@
             <strong>Success! </strong>[[${added_success}]]
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
+        <div th:if="${updated_success != null}" class="alert alert-success alert-dismissible">
+            <strong>Success! </strong>[[${updated_success}]]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <div th:if="${no_updated != null}" class="alert alert-success alert-dismissible">
+            [[${no_updated}]]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
         <h3 class="text-center">Branch List</h3>
         <br>
         <div class="row justify-content-center">
@@ -48,7 +56,7 @@
                             <td th:text="${branchDto.name}"></td>
                             <td th:text="${branchDto.country}"></td>
                             <td th:text="${branchDto.type}"></td>
-                            <td> <a class="btn btn-primary">Update</a>
+                            <td> <a class="btn btn-primary" th:href="@{./update/{id}(id=${branchDto.id})}">Update</a>
                                 <a class="btn btn-danger">Delete</a>
                             </td>
                         </tr>

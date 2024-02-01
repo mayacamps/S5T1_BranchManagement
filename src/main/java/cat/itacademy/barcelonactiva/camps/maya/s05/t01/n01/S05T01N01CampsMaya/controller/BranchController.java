@@ -35,7 +35,7 @@ public class BranchController {
     }
     @PostMapping("/add")
     public String add(@Valid @ModelAttribute("branch_dto") BranchRequestDto branchReqDto, BindingResult bindingResult, RedirectAttributes redirect, Model model){
-        BranchDto existingDto = service.getByName(branchReqDto.getName());
+        BranchDto existingDto = service.getDtoByName(branchReqDto.getName());
         if (existingDto != null){
             bindingResult.reject("duplicate_entry", "Cannot use this name. '" + branchReqDto.getName() + "' already exists.");
         }
@@ -49,11 +49,34 @@ public class BranchController {
 
     @GetMapping("/get/{id}")
     public void getById(@PathVariable("id") Integer id){
-        service.getBranch(id);
+        service.getBranchById(id);
     }
 
-    @PutMapping("/update/{id}")
-    public void updateById(@PathVariable("id") Integer id, @Valid @RequestBody BranchDto branchDto){
+    @GetMapping("/update/{id}")
+    public String showUpdateForm(@PathVariable("id") Integer id, Model model){
+        BranchRequestDto branchRequestDto = service.toReq(service.getBranchById(id));
+        model.addAttribute("branchDto", branchRequestDto);
+        model.addAttribute("id", id);
+        return "update_form";
+    }
+    @PostMapping("/update/{id}")
+    public String updateByName(@PathVariable("id") Integer id, @Valid @ModelAttribute("branchDto") BranchRequestDto branchReqDto, BindingResult bindingResult, RedirectAttributes redirect, Model model){
+        BranchDto existingDto = service.getDtoByName(branchReqDto.getName());
+        if (!service.getBranchById(id).getName().equalsIgnoreCase(branchReqDto.getName())){
+            if (existingDto != null){
+                bindingResult.reject("duplicate_entry", "Cannot use this name. '" + branchReqDto.getName() + "' already exists.");
+            }
+        }
+        if (bindingResult.hasErrors()) {
+            return "update_form";
+        }
+
+        if (service.updateBranch(id, branchReqDto)){
+            redirect.addFlashAttribute("updated_success", "Branch updated.");
+        } else {
+            redirect.addFlashAttribute("no_updated", "No changes were made.");
+        }
+        return "redirect:/api/v1/";
     }
 
     @DeleteMapping("/delete/{id}")

@@ -5,6 +5,7 @@ import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.mo
 import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.model.entity.Branch;
 import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.repository.BranchRepository;
 import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.service.BranchService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -22,7 +23,16 @@ public class BranchServiceImpl implements BranchService {
     }
 
     @Override
-    public BranchDto getBranch(int id) {
+    public Branch getBranchById(Integer id) {
+        return branchRepo.findById(id).orElse(null);
+    }
+
+    @Override
+    public BranchDto getDtoByName(String name) {
+        Branch branchExisting = branchRepo.findByName(name).orElse(null);
+        if (branchExisting!=null){
+            return toDto(branchExisting);
+        }
         return null;
     }
 
@@ -34,32 +44,21 @@ public class BranchServiceImpl implements BranchService {
     }
 
     @Override
-    public boolean updateBranch(BranchDto branchDto) {
-        BranchDto existingDto = getByName(branchDto.getName());
-        if (existingDto == null){
+    public boolean updateBranch(Integer id, BranchRequestDto branchReqDto) {
+        Branch existingBranch = getBranchById(id);
+        if (existingBranch.getName().equalsIgnoreCase(branchReqDto.getName()) &&
+        existingBranch.getCountry().equalsIgnoreCase(branchReqDto.getCountry())){
             return false;
         }
-        if (!branchDto.getName().equalsIgnoreCase(existingDto.getName())){
-            existingDto.setName(branchDto.getName());
-        }
-        existingDto.setCountry(branchDto.getCountry());
-        existingDto.setType(branchDto.getType());
-//        branchRepo.save(toEntity(existingDto));
+        existingBranch.setName(branchReqDto.getName());
+        existingBranch.setCountry(branchReqDto.getCountry());
+        branchRepo.save(existingBranch);
         return true;
     }
 
     @Override
     public void deleteBranch(int id) {
 
-    }
-
-    @Override
-    public BranchDto getByName(String name) {
-        Branch branchExisting = branchRepo.findByName(name).orElse(null);
-        if (branchExisting!=null){
-            return toDto(branchExisting);
-        }
-        return null;
     }
 
     @Override
@@ -71,4 +70,12 @@ public class BranchServiceImpl implements BranchService {
     public BranchDto toDto(Branch branch) {
         return new BranchDto(branch.getId(), branch.getName(), branch.getCountry());
     }
+
+    @Override
+    public BranchRequestDto toReq(Branch branch){
+        return new BranchRequestDto(branch.getName(), branch.getCountry());
+    }
+
+
+
 }

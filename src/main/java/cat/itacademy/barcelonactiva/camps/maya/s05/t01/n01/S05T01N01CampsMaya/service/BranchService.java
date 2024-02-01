@@ -9,12 +9,13 @@ import java.util.Optional;
 
 public interface BranchService {
     public List<BranchDto> getAllBranches();
-    public BranchDto getBranch(int id);
+    public Branch getBranchById(Integer id);
+    public BranchDto getDtoByName (String name);
     public void addBranch(BranchRequestDto branchReqDto);
-    public boolean updateBranch(BranchDto branchDto);
+    public boolean updateBranch(Integer id, BranchRequestDto branchReqDto);
     public void deleteBranch(int id);
-    public BranchDto getByName (String name);
     public Branch toEntity(BranchRequestDto branchReqDto);
     public BranchDto toDto(Branch branch);
+    public BranchRequestDto toReq(Branch branch);
 
 }
