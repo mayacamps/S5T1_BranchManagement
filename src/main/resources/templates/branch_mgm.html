@@ -34,16 +34,15 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         <h3 class="text-center">Branch List</h3>
-        <br>
         <div class="row justify-content-center">
-            <div class="col-auto">
+            <div class="col-md-7">
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <a class="btn btn-primary btn-sm mb-3" href="add"> Add Branch </a>
+                    <a class="btn btn-primary mb-3" href="add"> Add Branch </a>
                 </div>
 
                 <th:block th:if="${not#lists.isEmpty(allBranches)}">
-                    <table class="table table-striped table-responsive-md table-bordered border-primary">
-                        <thead class="table table-dark">
+                    <table class="table table-responsive-md table-bordered border-dark text-center">
+                        <thead class="table-light border-dark">
                         <tr>
                             <th>Name</th>
                             <th>Country</th>
@@ -56,7 +55,9 @@
                             <td th:text="${branchDto.name}"></td>
                             <td th:text="${branchDto.country}"></td>
                             <td th:text="${branchDto.type}"></td>
-                            <td> <a class="btn btn-primary" th:href="@{./update/{id}(id=${branchDto.id})}">Update</a>
+                            <td>
+                                <a class="btn btn-primary" th:href="@{./getOne/{id}(id=${branchDto.id})}">Detail</a>
+                                <a class="btn btn-primary" th:href="@{./update/{id}(id=${branchDto.id})}">Update</a>
                                 <a class="btn btn-danger">Delete</a>
                             </td>
                         </tr>

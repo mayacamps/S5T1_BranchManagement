@@ -47,9 +47,11 @@ public class BranchController {
         return "redirect:/api/v1/";
     }
 
-    @GetMapping("/get/{id}")
-    public void getById(@PathVariable("id") Integer id){
-        service.getBranchById(id);
+    @GetMapping("/getOne/{id}")
+    public String getById(@PathVariable("id") Integer id, Model model){
+        BranchDto existingDto = service.getDtoByName(service.getBranchById(id).getName());
+        model.addAttribute("branchDto", existingDto);
+        return "showOneDetail";
     }
 
     @GetMapping("/update/{id}")
