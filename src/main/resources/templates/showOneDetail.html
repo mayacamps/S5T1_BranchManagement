@@ -21,15 +21,14 @@
     </nav>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-7">
                 <br>
                 <h3 class="text-center">Branch Detail</h3>
                 <br>
                 <th:block th:if="${branchDto != null}">
                     <table class="table table-responsive-md table-bordered border-dark text-center">
-                        <thead class="table-light border-dark">
+                        <thead class="table-dark border-light">
                         <tr>
-                            <th>Id</th>
                             <th>Name</th>
                             <th>Country</th>
                             <th>EU/non-EU</th>
@@ -38,7 +37,6 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td th:text="${branchDto.id}"></td>
                             <td th:text="${branchDto.name}"></td>
                             <td th:text="${branchDto.country}"></td>
                             <td th:text="${branchDto.type}"></td>
