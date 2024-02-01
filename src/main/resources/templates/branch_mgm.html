@@ -41,8 +41,8 @@
                 </div>
 
                 <th:block th:if="${not#lists.isEmpty(allBranches)}">
-                    <table class="table table-responsive-md table-bordered border-dark text-center">
-                        <thead class="table-light border-dark">
+                    <table class="table table-responsive-md table-hover table-bordered border-dark text-center">
+                        <thead class="table-dark border-light">
                         <tr>
                             <th>Name</th>
                             <th>Country</th>
@@ -56,9 +56,9 @@
                             <td th:text="${branchDto.country}"></td>
                             <td th:text="${branchDto.type}"></td>
                             <td>
-                                <a class="btn btn-primary" th:href="@{./getOne/{id}(id=${branchDto.id})}">Detail</a>
-                                <a class="btn btn-primary" th:href="@{./update/{id}(id=${branchDto.id})}">Update</a>
-                                <a class="btn btn-danger">Delete</a>
+                                <a class="btn btn-info" th:href="@{./getOne/{id}(id=${branchDto.id})}">Detail</a>
+                                <a class="btn btn-primary" th:href="@{./update/{id}(id=${branchDto.id})}">Edit</a>
+                                <a class="btn btn-danger" th:href="@{./{id}(id=${branchDto.id})}">Delete</a>
                             </td>
                         </tr>
                         </tbody>
@@ -85,7 +85,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

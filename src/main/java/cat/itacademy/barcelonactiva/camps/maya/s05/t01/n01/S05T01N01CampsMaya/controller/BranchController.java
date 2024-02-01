@@ -81,8 +81,9 @@ public class BranchController {
         return "redirect:/api/v1/";
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void deleteById(@PathVariable("id") Integer id){
+    @GetMapping("/{id}")
+    public String deleteById(@PathVariable("id") Integer id){
         service.deleteBranch(id);
+        return "redirect:/api/v1/";
     }
 }

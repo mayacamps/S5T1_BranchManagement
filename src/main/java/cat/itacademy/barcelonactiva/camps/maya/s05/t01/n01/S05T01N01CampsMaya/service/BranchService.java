@@ -13,7 +13,7 @@ public interface BranchService {
     public BranchDto getDtoByName (String name);
     public void addBranch(BranchRequestDto branchReqDto);
     public boolean updateBranch(Integer id, BranchRequestDto branchReqDto);
-    public void deleteBranch(int id);
+    public void deleteBranch(Integer id);
     public Branch toEntity(BranchRequestDto branchReqDto);
     public BranchDto toDto(Branch branch);
     public BranchRequestDto toReq(Branch branch);

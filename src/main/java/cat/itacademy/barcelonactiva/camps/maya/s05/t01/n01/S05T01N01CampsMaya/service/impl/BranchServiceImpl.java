@@ -57,8 +57,8 @@ public class BranchServiceImpl implements BranchService {
     }
 
     @Override
-    public void deleteBranch(int id) {
-
+    public void deleteBranch(Integer id) {
+        branchRepo.delete(getBranchById(id));
     }
 
     @Override
@@ -75,7 +75,5 @@ public class BranchServiceImpl implements BranchService {
     public BranchRequestDto toReq(Branch branch){
         return new BranchRequestDto(branch.getName(), branch.getCountry());
     }
-
-
 
 }
