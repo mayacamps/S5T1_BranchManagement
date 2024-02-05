@@ -3,7 +3,8 @@ package cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.m
 import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.model.enums.Type;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.util.StringUtils;
+import org.apache.commons.text.WordUtils;
+
 
 import java.util.*;
 
@@ -21,8 +22,8 @@ public class BranchDto {
 
     public BranchDto(Integer id, String name, String country){
         this.id=id;
-        this.name = StringUtils.capitalize(name);
-        this.country = StringUtils.capitalize(country);
+        this.name = WordUtils.capitalize(name);
+        this.country = WordUtils.capitalize(country);
         this.type = getType(country);
     }
 
