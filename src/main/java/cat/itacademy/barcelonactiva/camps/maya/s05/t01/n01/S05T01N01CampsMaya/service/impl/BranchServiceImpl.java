@@ -18,7 +18,6 @@ public class BranchServiceImpl implements BranchService {
     @Override
     public List<BranchDto> getAllBranches() {
         List<Branch> branches = branchRepo.findAll();
-        System.out.println(branches.size());
         return branches.stream().map(this::toDto).toList();
     }
 
