@@ -27,6 +27,14 @@ public class BranchServiceImpl implements BranchService {
     }
 
     @Override
+    public BranchDto getDtoById(Integer id) {
+        Branch branchExisting = branchRepo.findByName(getBranchById(id).getName()).orElse(null);
+        if (branchExisting!=null){
+            return toDto(branchExisting);
+        }
+        return null;
+    }
+    @Override
     public BranchDto getDtoByName(String name) {
         Branch branchExisting = branchRepo.findByName(name).orElse(null);
         if (branchExisting!=null){

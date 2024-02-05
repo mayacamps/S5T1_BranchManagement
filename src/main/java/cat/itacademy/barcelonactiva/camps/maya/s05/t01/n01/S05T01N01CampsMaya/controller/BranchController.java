@@ -49,7 +49,7 @@ public class BranchController {
 
     @GetMapping("/getOne/{id}")
     public String getById(@PathVariable("id") Integer id, Model model){
-        BranchDto existingDto = service.getDtoByName(service.getBranchById(id).getName());
+        BranchDto existingDto = service.getDtoById(id);
         model.addAttribute("branchDto", existingDto);
         return "showOneDetail";
     }
@@ -61,6 +61,7 @@ public class BranchController {
         model.addAttribute("id", id);
         return "update_form";
     }
+    
     @PostMapping("/update/{id}")
     public String updateByName(@PathVariable("id") Integer id, @Valid @ModelAttribute("branchDto") BranchRequestDto branchReqDto, BindingResult bindingResult, RedirectAttributes redirect, Model model){
         BranchDto existingDto = service.getDtoByName(branchReqDto.getName());

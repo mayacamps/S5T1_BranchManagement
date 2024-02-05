@@ -10,6 +10,7 @@ import java.util.Optional;
 public interface BranchService {
     public List<BranchDto> getAllBranches();
     public Branch getBranchById(Integer id);
+    public BranchDto getDtoById (Integer id);
     public BranchDto getDtoByName (String name);
     public void addBranch(BranchRequestDto branchReqDto);
     public boolean updateBranch(Integer id, BranchRequestDto branchReqDto);
