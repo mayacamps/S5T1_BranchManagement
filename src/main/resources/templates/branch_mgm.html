@@ -58,25 +58,8 @@
                                 <td>
                                     <a class="btn btn-info" th:href="@{./getOne/{id}(id=${branchDto.id})}">Detail</a>
                                     <a class="btn btn-primary" th:href="@{./update/{id}(id=${branchDto.id})}">Edit</a>
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                    <a class="btn btn-danger" onclick="return confirm('Delete Branch?')" th:href="@{./delete/{id}(id=${branchDto.id})}">Delete</a>
                                 </td>
-                                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Delete Branch?</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>This branch will be permanently deleted.</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <a class="btn btn-danger" th:href="@{./delete/{id}(id=${branchDto.id})}">Delete</a>
-                                                <a href="/api/v1" class="btn btn-light ms-2">Cancel</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </tr>
                         </tbody>
                     </table>
