@@ -44,6 +44,12 @@ public class BranchServiceImpl implements BranchService {
     }
 
     @Override
+    public BranchRequestDto getReq(Integer id){
+        Branch branch = getBranchById(id);
+        return new BranchRequestDto(branch.getName(), branch.getCountry());
+    }
+
+    @Override
     public void addBranch(BranchRequestDto branchReqDto) {
         Branch branch = toEntity(branchReqDto);
         toDto(branch).setId(branch.getId());
@@ -69,6 +75,11 @@ public class BranchServiceImpl implements BranchService {
     }
 
     @Override
+    public boolean existsBranchName(Integer id, String name) {
+        return getBranchById(id).getName().equalsIgnoreCase(name);
+    }
+
+    @Override
     public Branch toEntity(BranchRequestDto reqDto) {
         return new Branch(reqDto.getName(), reqDto.getCountry());
     }
@@ -77,10 +88,4 @@ public class BranchServiceImpl implements BranchService {
     public BranchDto toDto(Branch branch) {
         return new BranchDto(branch.getId(), branch.getName(), branch.getCountry());
     }
-
-    @Override
-    public BranchRequestDto toReq(Branch branch){
-        return new BranchRequestDto(branch.getName(), branch.getCountry());
-    }
-
 }

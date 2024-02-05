@@ -56,7 +56,7 @@ public class BranchController {
 
     @GetMapping("/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model){
-        BranchRequestDto branchRequestDto = service.toReq(service.getBranchById(id));
+        BranchRequestDto branchRequestDto = service.getReq(id);
         model.addAttribute("branchDto", branchRequestDto);
         model.addAttribute("id", id);
         return "update_form";
@@ -65,7 +65,7 @@ public class BranchController {
     @PostMapping("/update/{id}")
     public String updateByName(@PathVariable("id") Integer id, @Valid @ModelAttribute("branchDto") BranchRequestDto branchReqDto, BindingResult bindingResult, RedirectAttributes redirect, Model model){
         BranchDto existingDto = service.getDtoByName(branchReqDto.getName());
-        if (!service.getBranchById(id).getName().equalsIgnoreCase(branchReqDto.getName())){
+        if (!service.existsBranchName(id, branchReqDto.getName())){
             if (existingDto != null){
                 bindingResult.reject("duplicate_entry", "Cannot use this name. '" + branchReqDto.getName() + "' already exists.");
             }
@@ -73,7 +73,6 @@ public class BranchController {
         if (bindingResult.hasErrors()) {
             return "update_form";
         }
-
         if (service.updateBranch(id, branchReqDto)){
             redirect.addFlashAttribute("updated_success", "Branch updated.");
         } else {
