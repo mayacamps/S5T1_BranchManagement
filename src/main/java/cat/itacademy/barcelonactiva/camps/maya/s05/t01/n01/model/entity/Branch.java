@@ -1,4 +1,4 @@
-package cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.model.entity;
+package cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

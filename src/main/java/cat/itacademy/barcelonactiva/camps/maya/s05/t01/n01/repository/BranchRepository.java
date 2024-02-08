@@ -1,6 +1,6 @@
-package cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.repository;
+package cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.repository;
 
-import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.model.entity.Branch;
+import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.model.entity.Branch;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

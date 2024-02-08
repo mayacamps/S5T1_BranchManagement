@@ -1,11 +1,10 @@
-package cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.service;
+package cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.service;
 
-import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.model.dto.BranchDto;
-import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.model.dto.request.BranchRequestDto;
-import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.model.entity.Branch;
+import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.model.dto.BranchDto;
+import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.model.dto.request.BranchRequestDto;
+import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.model.entity.Branch;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface BranchService {
     public List<BranchDto> getAllBranches();

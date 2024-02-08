@@ -1,11 +1,10 @@
-package cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.service.impl;
+package cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.service.impl;
 
-import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.model.dto.BranchDto;
-import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.model.dto.request.BranchRequestDto;
-import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.model.entity.Branch;
-import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.repository.BranchRepository;
-import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.service.BranchService;
-import jakarta.persistence.EntityNotFoundException;
+import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.model.dto.BranchDto;
+import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.model.dto.request.BranchRequestDto;
+import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.model.entity.Branch;
+import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.repository.BranchRepository;
+import cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.service.BranchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;

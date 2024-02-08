@@ -1,4 +1,4 @@
-package cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya;
+package cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

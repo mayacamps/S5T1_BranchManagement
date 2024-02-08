@@ -1,4 +1,4 @@
-package cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.model.dto.request;
+package cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.model.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

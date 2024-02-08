@@ -1,4 +1,4 @@
-package cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.S05T01N01CampsMaya.exceptions;
+package cat.itacademy.barcelonactiva.camps.maya.s05.t01.n01.exceptions;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
